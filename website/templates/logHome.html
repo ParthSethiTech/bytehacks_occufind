@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Occufind</title>
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+</head>
+
+<body>
+	<h1>Hello</h1>
+	<form action="{{ url_for('postJob') }}" method="post">
+		<label for="title">Type in your job title</label>
+		<input type="text" name="title">	
+
+
+		<label for="description">Type in your job description</label>
+		<input type="text" name="description">	
+
+		<label for="criteria">Type in your job criteria</label>
+		<input type="text" name="criteria">	
+
+		<button>Submit</button>
+	</form>
+
+	<form action="{{ url_for('logout')}}">
+		<button>Log out</button>
+	</form>
+
+	 <ul>
+        {% for jobs in job_list%}
+        <li>{{jobs[0]}} {{ jobs[1] }} {{ jobs[2] }} {{ jobs[3]}}</li>
+		<form action="{{ url_for('apply') }}" method="post">
+			<label for="title">Enter the job title: </label>
+			<input type="text" name="title">
+			<label for="email">Enter your email: </label>
+			<input type = "email" name="email">
+			<button>Apply!</button>
+		</form>
+
+        {% endfor %}
+      </ul>
+
+
+      <h1>Posted Jobs</h1>
+      <ul>
+      	{% for pojobs in posted_jobs %}
+      	<li>{{pojobs[0]}} {{pojobs[1]}} {{pojobs[2]}}</li>
+      	{% endfor %}
+      </ul>
+
+      <h1>Your applications</h1>
+      <ul>
+      	{% for applications in posted_applications%}
+      	<li>{{applications[0]}} {{applications[1]}} {{applications[2]}}</li>
+      	{% endfor %}
+      </ul>
+		
+
+	  <h1>All Applicants</h1>
+
+	  <ul>
+	  	{% for applicants in applicant_list %}
+	  	<li>{{applicants[0]}} {{applicants[1]}} {{applicants[2]}}</li>
+	  	{% endfor %}
+	  </ul>
+</body>
+</html>

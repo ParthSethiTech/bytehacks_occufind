@@ -1,0 +1,165 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Occufind</title>
+    <!--Ion Icons-->
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
+    <!--Our own stylesheet-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css')}}"
+    />
+</head>
+<body>
+
+    <header>
+      <div class="container">
+        <nav>
+          <div class="nav-brand">
+            <a href="{{ url_for('index') }}">
+              <img src="{{ url_for('static', filename = 'images/search-outline.svg') }}" alt="">
+            </a>
+          </div>
+
+          <div class="menu-icons open">
+            <i class="icon ion-md-menu"></i>
+          </div>
+
+          <ul class="nav-list">
+            <div class="menu-icons close">
+              <i class="icon ion-md-close"></i>
+            </div>
+            <li class="nav-item">
+              <a href="{{ url_for('index') }}" class="nav-link current">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#main-message" class="nav-link">Look For A Job</a>
+            </li>
+            <li class="nav-item">
+              <a href="#features" class="nav-link">Features</a>
+            </li>
+            <li class="nav-item">
+              <a href="#testimonials" class="nav-link">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="#policy" class="nav-link">Our Policies</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="hero">
+      <div class="container">
+        <div class="main-message" id="main-message">
+          <h3>The great website</h3>
+          <h1>Chat App</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem ex esse illo enim veniam dolores incidunt tenetur dolorum quo maiores libero, excepturi impedit harum eius iure quae provident praesentium eveniet?</p>
+          <div class="cta">
+              <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
+              <a href="{{ url_for('signup') }}" class="btn">Login</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="experience">
+        <div class="container">
+          <div class="title-heading">
+            <h3>Experience</h3>
+            <h1>The thrilling website</h1>
+            
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur consequatur, perferendis alias incidunt minima omnis vel nemo officiis suscipit quidem illum unde in quam iure ipsa qui praesentium cumque? Maiores.</p>
+  
+          </div>
+
+          <div class="features" id="features">
+            
+            <div class="features-item feature1">
+              <i class="icon ion-md-star"></i>
+              <h1>Feature 1</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo veritatis esse ipsum mollitia voluptas, delectus, aliquid dolorum est nulla dicta nostrum ex adipisci quaerat officiis atque ad. Numquam, quae, doloribus!</p>
+            </div>
+
+            <div class="features-item feature2">
+              <i class="icon ion-md-compass"></i>
+              <h1>Feature 2</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo veritatis esse ipsum mollitia voluptas, delectus, aliquid dolorum est nulla dicta nostrum ex adipisci quaerat officiis atque ad. Numquam, quae, doloribus!</p>
+            </div>
+
+            <div class="features-item feature3">
+              <i class="icon ion-md-bonfire"></i>
+              <h1>Feature 3</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo veritatis esse ipsum mollitia voluptas, delectus, aliquid dolorum est nulla dicta nostrum ex adipisci quaerat officiis atque ad. Numquam, quae, doloribus!</p>
+            </div>
+
+
+
+          </div>
+        </div>
+      </section>
+
+
+
+      <section id="testimonials">
+        <div class="team-section">
+          <h1>Our Team</h1>
+          <span class="border"></span>
+          <div class="ps">
+            <a href="#"><img src="{{ url_for('static', filename = 'images/profile-pic.jpg') }}" alt=""></a>
+            <p class="titly">Web Dev</p>
+            <a href="#"><img src="" alt=""></a>
+            <a href="#"><img src="" alt=""></a>
+          </div>
+        </div>
+
+        
+      </section>
+
+
+
+
+      <section class="begin-adventure" id="policy">
+        <div class="container">
+          <div class="title-heading">
+            <h3>Let the</h3>
+            <h1>adventure begin</h1>
+            
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur consequatur, perferendis alias incidunt minima omnis vel nemo officiis suscipit quidem illum unde in quam iure ipsa qui praesentium cumque? Maiores.</p>
+  
+          </div>
+          
+          <div class="adventure-grid">
+            <div class="adventure-grid-item">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aut aliquid, laborum voluptas dicta, architecto blanditiis totam hic rem tempore ipsa quis vero qui, aperiam quisquam optio soluta quidem culpa.</p>
+            </div>
+
+            <div class="adventure-grid-item">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aut aliquid, laborum voluptas dicta, architecto blanditiis totam hic rem tempore ipsa quis vero qui, aperiam quisquam optio soluta quidem culpa.</p>
+            </div>
+          </div>
+
+          <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
+          <a href="{{ url_for('signup') }}" class="btn">Log In</a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>&copy; 2020 website. All rights reserved</p>
+    </footer>
+    
+
+    <script src="{{ url_for('static', filename='javascript/app.js') }}"></script>
+</body>
+</html>
