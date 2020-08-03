@@ -1,69 +1,308 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/logStyle.css')}}"
+    />
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Novios</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navbar-nav">
+        <li class="logo">
+          <a href="#" class="nav-link">
+            <span class="link-text">OCCUFIND</span>
+          </a>
+        </li>
 
-  <title>Occufind</title>
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-</head>
+        <li class="nav-item">
+          <a href="#home" class="nav-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="32"
+              height="32"
+              viewBox="0 0 26 26"
+              style="fill: #000000;"
+            >
+              <path
+                fill="currentColor"
+                d="M 20 2.03125 C 19.449219 2.03125 19 2.480469 19 3.03125 L 19 7.8125 L 13.71875 2.53125 C 13.328125 2.140625 12.671875 2.140625 12.28125 2.53125 L 0.5625 14.28125 C 0.171875 14.671875 0.171875 15.296875 0.5625 15.6875 C 0.953125 16.078125 1.578125 16.078125 1.96875 15.6875 L 13 4.65625 L 24.0625 15.71875 C 24.257813 15.914063 24.523438 16.03125 24.78125 16.03125 C 25.039063 16.03125 25.273438 15.914063 25.46875 15.71875 C 25.859375 15.328125 25.859375 14.703125 25.46875 14.3125 L 22 10.84375 L 22 3.03125 C 22 2.480469 21.550781 2.03125 21 2.03125 Z M 13 6.5 L 2 17.5 L 2 23 C 2 24.65625 3.34375 26 5 26 L 21 26 C 22.65625 26 24 24.65625 24 23 L 24 17.5 Z M 11 16 L 15 16 C 15.550781 16 16 16.449219 16 17 L 16 23 C 16 23.550781 15.550781 24 15 24 L 11 24 C 10.449219 24 10 23.550781 10 23 L 10 17 C 10 16.449219 10.449219 16 11 16 Z"
+                class="fa-secondary"
+              ></path>
+              <path fill="currentColor" class="fa-primary"></path>
+            </svg>
+            <span class="link-text">Home</span>
+          </a>
+        </li>
 
-<body>
-	<h1>Hello</h1>
-	<form action="{{ url_for('postJob') }}" method="post">
-		<label for="title">Type in your job title</label>
-		<input type="text" name="title">	
+        <li class="nav-item">
+          <a href="#why" class="nav-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              style="fill: #000000;"
+            >
+              <path
+                fill="currentColor"
+                d="M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z"
+                class="fa-secondary"
+              ></path>
+              <path fill="currentColor" class="fa-primary"></path>
+            </svg>
+            <span class="link-text">Find applicants</span>
+          </a>
+        </li>
 
+        <li class="nav-item">
+          <a href="{{url_for('logout')}}" class="nav-link">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fad"
+              data-icon="space-shuttle"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 512"
+              class="svg-inline--fa fa-space-shuttle fa-w-20 fa-5x"
+            >
+              <g class="fa-group">
+                <path
+                  fill="currentColor"
+                  d="M32 416c0 35.35 21.49 64 48 64h16V352H32zm154.54-232h280.13L376 168C243 140.59 222.45 51.22 128 34.65V160h18.34a45.62 45.62 0 0 1 40.2 24zM32 96v64h64V32H80c-26.51 0-48 28.65-48 64zm114.34 256H128v125.35C222.45 460.78 243 371.41 376 344l90.67-16H186.54a45.62 45.62 0 0 1-40.2 24z"
+                  class="fa-secondary"
+                ></path>
+                <path
+                  fill="currentColor"
+                  d="M592.6 208.24C559.73 192.84 515.78 184 472 184H186.54a45.62 45.62 0 0 0-40.2-24H32c-23.2 0-32 10-32 24v144c0 14 8.82 24 32 24h114.34a45.62 45.62 0 0 0 40.2-24H472c43.78 0 87.73-8.84 120.6-24.24C622.28 289.84 640 272 640 256s-17.72-33.84-47.4-47.76zM488 296a8 8 0 0 1-8-8v-64a8 8 0 0 1 8-8c31.91 0 31.94 80 0 80z"
+                  class="fa-primary"
+                ></path>
+              </g>
+            </svg>
+            <span class="link-text">Logout</span>
+          </a>
+        </li>
 
-		<label for="description">Type in your job description</label>
-		<input type="text" name="description">	
+        <li class="nav-item">
+          <a href="#postJob" class="nav-link">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fad"
+              data-icon="space-station-moon-alt"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              class="svg-inline--fa fa-space-station-moon-alt fa-w-16 fa-5x"
+            >
+              <g class="fa-group">
+                <circle xmlns="http://www.w3.org/2000/svg" cx="256" cy="378.5" r="25" fill = "currentColor" class="fa-secondary"></circle>
+                <path xmlns="http://www.w3.org/2000/svg" d="M256,0C114.516,0,0,114.497,0,256c0,141.484,114.497,256,256,256c141.484,0,256-114.497,256-256     C512,114.516,397.503,0,256,0z M256,472c-119.377,0-216-96.607-216-216c0-119.377,96.607-216,216-216     c119.377,0,216,96.607,216,216C472,375.377,375.393,472,256,472z" fill = "currentColor" class="fa-secondary">
+              </path>
 
-		<label for="criteria">Type in your job criteria</label>
-		<input type="text" name="criteria">	
+                <path xmlns="http://www.w3.org/2000/svg" d="M256,128.5c-44.112,0-80,35.888-80,80c0,11.046,8.954,20,20,20s20-8.954,20-20c0-22.056,17.944-40,40-40     c22.056,0,40,17.944,40,40c0,22.056-17.944,40-40,40c-11.046,0-20,8.954-20,20v50c0,11.046,8.954,20,20,20     c11.046,0,20-8.954,20-20v-32.531c34.466-8.903,60-40.26,60-77.469C336,164.388,300.112,128.5,256,128.5z" fill = "currentColor" class="fa-secondary"></path>
+                  </path>
+                  <path fill="currentColor" class="fa-primary"></path>
+              </g>
+            </svg>
+            <span class="link-text">All your jobs</span>
+          </a>
+        </li>
+        
+              <li class="nav-item">
+        <a href="#about" class="nav-link">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fad"
+            data-icon="space-station-moon-alt"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            class="svg-inline--fa fa-space-station-moon-alt fa-w-16 fa-5x"
+          >
+            <g class="fa-group">
+              <path
+                fill="currentColor"
+                d="M501.70312,224H448V160H368V96h48V66.67383A246.86934,246.86934,0,0,0,256,8C119.03125,8,8,119.0332,8,256a250.017,250.017,0,0,0,1.72656,28.26562C81.19531,306.76953,165.47656,320,256,320s174.80469-13.23047,246.27344-35.73438A250.017,250.017,0,0,0,504,256,248.44936,248.44936,0,0,0,501.70312,224ZM192,240a80,80,0,1,1,80-80A80.00021,80.00021,0,0,1,192,240ZM384,343.13867A940.33806,940.33806,0,0,1,256,352c-87.34375,0-168.71094-11.46094-239.28906-31.73633C45.05859,426.01953,141.29688,504,256,504a247.45808,247.45808,0,0,0,192-91.0918V384H384Z"
+                class="fa-secondary"
+              ></path>
+              <path
+                fill="currentColor"
+                d="M256,320c-90.52344,0-174.80469-13.23047-246.27344-35.73438a246.11376,246.11376,0,0,0,6.98438,35.998C87.28906,340.53906,168.65625,352,256,352s168.71094-11.46094,239.28906-31.73633a246.11376,246.11376,0,0,0,6.98438-35.998C430.80469,306.76953,346.52344,320,256,320Zm-64-80a80,80,0,1,0-80-80A80.00021,80.00021,0,0,0,192,240Zm0-104a24,24,0,1,1-24,24A23.99993,23.99993,0,0,1,192,136Z"
+                class="fa-primary"
+              ></path>
+            </g>
+          </svg>
+          <span class="link-text">Look for jobs</span>
+        </a>
+      </li>
+  
 
-		<button>Submit</button>
-	</form>
+        
 
-	<form action="{{ url_for('logout')}}">
-		<button>Log out</button>
-	</form>
+      </ul>
+    </nav>
 
-	 <ul>
-        {% for jobs in job_list%}
-        <li>{{jobs[0]}} {{ jobs[1] }} {{ jobs[2] }} {{ jobs[3]}}</li>
-		<form action="{{ url_for('apply') }}" method="post">
-			<label for="title">Enter the job title: </label>
-			<input type="text" name="title">
-			<label for="email">Enter your email: </label>
-			<input type = "email" name="email">
-			<button>Apply!</button>
-		</form>
+    
 
+    <main>
+      
+      <div class="content" id="home">
+        <br /><br /><br /><br /><br />
+        <div class="container">
+          <h1 class="typed">
+            Welcome to occufind <span class="typed-text">{{session["user"]}}</span
+              ><span class="cursor">&nbsp;</span>
+          </h1>
+          <p class="intro">A large and friendly community always looking for people with great skills and interests, will help you connect to your dreams faster than we or you can think.</p>
+
+          <img src="{{url_for('static', filename='images/notify.svg')}}" alt="" class="notif">
+        </div>
+      </div>
+
+      <div class="content" id="why">
+        <h1>Looking For Someone?</h1>
+        <br><br><br><br>
+        <form action="{{ url_for('postJob') }}" method="post">
+          <label for="title">Type in your job title</label>
+          <br>
+          <input type="text" name="title" required>  
+
+          <br>
+            
+          <label for="description">Type in your job description</label>
+          <br>
+          <input type="text" name="description" required>  
+
+          <br>
+
+          <label for="criteria">Type in your job criteria</label>
+          <br>
+          <input type="text" name="criteria" required> 
+          <br>
+
+          <label for="location">Enter Your Location(try to be as less specific as possible)</label>
+          <br>
+          <input type="text" name="location" required>
+          <br>
+          <button>Submit</button>
+
+        </form>
+
+        <p class="success">{{success}}</p>
+  
+      </div>
+        
+      </div>
+      <div class="content" id = "searchJob">
+        <h1>SEARCH FOR A JOB</h1>
+        <br><br><br><br>
+  <form action="{{ url_for('filterSearch') }}" method="post">
+    <label for="title">Search by Title</label>
+    <select name="title" id="title" >
+      {% for title in title_list%}
+      <option value="{{title[0]}}">{{title[0]}}</option>
+      {%endfor%}
+    </select>
+    <br><br>
+
+    <label for="title">Search by Criteria</label>
+    <select name="criteria" id="criteria" >
+      {% for criteria in criteria_list%}
+      <option value="{{criteria[0]}}">{{criteria[0]}}</option>
+      {%endfor%}
+    </select>
+    <br><br>
+
+    <label for="location">Search by Location</label>
+    <select name="location" id="location" >
+      {%for location in location_list%}
+      <option value="{{location[0]}}">{{location[0]}}</option>
+      {%endfor%}
+    </select>
+    <br><br>
+    <button>Enter</button>
+  </form>
+
+    <ul class="specific">
+    {% for jobs in req_job_list%}
+    <hr>
+    <li>Job Title: {{jobs[0]}} <br> Employer: {{jobs[1]}} <br> Job Description: {{jobs[2]}} <br> Job Criteria: {{jobs[3]}} <br> Job Location:{{jobs[4]}}</li>
+    {% endfor %}
+    </ul> 
+      </div>
+      <div class="content" id = "about">
+        <h1>Find Jobs Which Suit You Best</h1>
+        <br><br><br><br>
+        <ul>
+        {%for jobs in job_list%}
+        <hr>
+        <li>Job Title: <b>{{jobs[0]}}</b> <br>Posted By: <b>{{ jobs[1] }}</b><br> Job Description: <b>{{ jobs[2] }}</b><br> Job Criteria: <b>{{ jobs[3]}}</b> <br>Job Location:{{jobs[4]}}</li><br>
+          <form action="{{ url_for('apply') }}" method="post" class="suit">
+            <label for="title">Enter the job title: </label>
+            <input type="text" name="title" required>
+            <br>
+            <br><br>
+            <label for="email">Enter your email:</label>
+            <input type = "email" name="email" required>
+            <br>
+            <br><br><br>
+            <button>Apply!</button>
+            <br>
+          </form>
+        {%endfor%}
+      </ul>
+
+      
+      </div>
+
+      <div class="section" id="postJob">
+        <h1>Posted Jobs</h1>
+        <br><br><br><br>
+        <ul>
+          <hr>
+          {% for pojobs in posted_jobs %}
+          <li>Job Title: {{pojobs[0]}}<br> Job Description: {{pojobs[1]}} <br> Job Criteria: {{pojobs[2]}} <br>Job Location:{{pojobs[3]}}</li><br>
+          <hr>
+          {% endfor %}
+        </ul>
+
+        <h1>Your applications</h1>
+        <br><br><br><br>
+      <ul>
+        {% for applications in posted_applications%}
+        <hr>
+        <li>Name: {{applications[0]}} <br> Email: {{applications[1]}} <br> Title: {{applications[2]}} <br></li>
+        <hr>
         {% endfor %}
       </ul>
 
+      <h1>All Applicants</h1>
+      <br><br><br><br>
 
-      <h1>Posted Jobs</h1>
-      <ul>
-      	{% for pojobs in posted_jobs %}
-      	<li>{{pojobs[0]}} {{pojobs[1]}} {{pojobs[2]}}</li>
-      	{% endfor %}
-      </ul>
-
-      <h1>Your applications</h1>
-      <ul>
-      	{% for applications in posted_applications%}
-      	<li>{{applications[0]}} {{applications[1]}} {{applications[2]}}</li>
-      	{% endfor %}
-      </ul>
-		
-
-	  <h1>All Applicants</h1>
-
-	  <ul>
-	  	{% for applicants in applicant_list %}
-	  	<li>{{applicants[0]}} {{applicants[1]}} {{applicants[2]}}</li>
-	  	{% endfor %}
-	  </ul>
-</body>
+    <ul>
+      {% for applicants in applicant_list %}
+      <hr>
+      <li>Name Of Applicant: {{applicants[0]}} <br> Email Address: {{applicants[1]}} <br> Job Description: {{applicants[2]}} <br></li>
+      {% endfor %}
+    </ul>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='javascript/app.js')}}"></script>
+  </body>
 </html>

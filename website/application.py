@@ -44,20 +44,55 @@ def signup():
 	else:
 		return render_template("signup.html")
 
+@app.route("/loggedIn")
+def returnLogged():
 
 
-@app.route("/jobPost", methods = ["POST"])
+	title_list = db.execute("SELECT title FROM jobs").fetchall()
+
+	criteria_list = db.execute("SELECT criteria FROM jobs").fetchall()
+
+	location_list = db.execute("SELECT location FROM jobs").fetchall()
+
+	applicant_list = db.execute("SELECT name,email,title FROM applications").fetchall()
+
+	job_list = db.execute("SELECT title,username,description,criteria FROM jobs").fetchall()
+	username = session["user"]
+
+	posted_applications = db.execute("SELECT name,email,title FROM applications WHERE name = :username", {"username":session["user"]})
+
+	posted_jobs = db.execute("SELECT title, description, criteria,location FROM jobs WHERE username = :username", {"username":session["user"]})
+	return render_template("logHome.html", job_list=job_list, posted_jobs=posted_jobs, posted_applications=posted_applications, applicant_list = applicant_list, title_list=title_list, criteria_list=criteria_list, location_list=location_list)
+
+
+@app.route("/loggedIn", methods = ["POST"])
 def postJob():
 	user = session["user"]
 	title = request.form.get("title").lower()
 	description = request.form.get("description")
 	criteria = request.form.get("criteria")
+	location = request.form.get("location")
 
-	db.execute("INSERT INTO jobs (username,title,description,criteria) VALUES (:user, :title, :description, :criteria)", {"user":user, "title":title, "description":description, "criteria":criteria})
+	db.execute("INSERT INTO jobs (username,title,description,criteria,location) VALUES (:user, :title, :description, :criteria, :location)", {"user":user, "title":title, "description":description, "criteria":criteria, "location":location})
 	db.execute("COMMIT")
 
-	return redirect(url_for('returnLogged'))
+	success = "Job Posted Successfully"
 
+	title_list = db.execute("SELECT title FROM jobs").fetchall()
+
+	criteria_list = db.execute("SELECT criteria FROM jobs").fetchall()
+
+	location_list = db.execute("SELECT location FROM jobs").fetchall()
+
+	applicant_list = db.execute("SELECT name,email,title FROM applications").fetchall()
+
+	job_list = db.execute("SELECT title,username,description,criteria,location FROM jobs").fetchall()
+	username = session["user"]
+
+	posted_applications = db.execute("SELECT name,email,title FROM applications WHERE name = :username", {"username":username})
+
+	posted_jobs = db.execute("SELECT title, description, criteria FROM jobs WHERE username = :username", {"username":username})
+	return render_template("logHome.html", location_list=location_list,job_list=job_list, posted_jobs=posted_jobs, posted_applications=posted_applications, applicant_list = applicant_list, title_list=title_list, criteria_list=criteria_list, success=success)
 
 
 @app.route("/signup", methods=["POST"])
@@ -115,18 +150,7 @@ def logout():
 	session.pop("user", None)
 	return redirect(url_for('signup'))
 
-@app.route("/loggedIn")
-def returnLogged():
 
-	applicant_list = db.execute("SELECT name,email,title FROM applications").fetchall()
-
-	job_list = db.execute("SELECT title,username,description,criteria FROM jobs").fetchall()
-	username = session["user"]
-
-	posted_applications = db.execute("SELECT name,email,title FROM applications WHERE name = :username", {"username":username})
-
-	posted_jobs = db.execute("SELECT title, description, criteria FROM jobs WHERE username = :username", {"username":username})
-	return render_template("logHome.html", job_list=job_list, posted_jobs=posted_jobs, posted_applications=posted_applications, applicant_list = applicant_list)
 
 @app.route("/apply", methods=["POST"])
 def apply():
@@ -138,3 +162,28 @@ def apply():
 	db.execute("COMMIT")
 
 	return redirect(url_for('returnLogged'))
+
+@app.route('/search', methods = ['POST'])
+def filterSearch():
+
+	title = request.form.get("title")
+	criteria = request.form.get("criteria")
+	location = request.form.get("location")
+
+	req_job_list = db.execute("SELECT title,username,description,criteria,location FROM jobs WHERE title = :title AND criteria = :criteria AND location=:location",{"title":title,"criteria":criteria, "location":location}).fetchall()
+
+	title_list = db.execute("SELECT title FROM jobs").fetchall()
+
+	criteria_list = db.execute("SELECT criteria FROM jobs").fetchall()
+
+	applicant_list = db.execute("SELECT name,email,title FROM applications").fetchall()
+
+	location_list = db.execute("SELECT location FROM jobs").fetchall()
+
+	job_list = db.execute("SELECT title,username,description,criteria,location FROM jobs").fetchall()
+	username = session["user"]
+
+	posted_applications = db.execute("SELECT name,email,title FROM applications WHERE name = :username", {"username":username})
+
+	posted_jobs = db.execute("SELECT title, description, criteria,location FROM jobs WHERE username = :username", {"username":username})
+	return render_template("logHome.html", job_list=job_list, posted_jobs=posted_jobs, posted_applications=posted_applications, applicant_list = applicant_list, title_list=title_list, criteria_list=criteria_list,req_job_list=req_job_list,location_list=location_list)
