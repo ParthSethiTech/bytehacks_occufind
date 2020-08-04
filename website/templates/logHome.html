@@ -254,7 +254,7 @@
         <ul>
         {%for jobs in job_list%}
         <hr>
-        <li>Job Title: <b>{{jobs[0]}}</b> <br><br>Posted By: <b>{{ jobs[1] }}</b><br><br> Job Description: <b>{{ jobs[2] }}</b><br><br>ob Criteria: <b>{{ jobs[3]}}</b> <br><br>Job Location:{{jobs[4]}}</li><br><br>
+        <li>Job Title: <b>{{jobs[0]}}</b> <br><br>Posted By: <b>{{ jobs[1] }}</b><br><br> Job Description: <b>{{ jobs[2] }}</b><br><br>Job Criteria: <b>{{ jobs[3]}}</b> <br><br>Job Location:{{jobs[4]}}</li><br><br>
           <form action="{{ url_for('apply') }}" method="post" class="suit">
             <label for="title">Enter the job title: </label>
             <input type="text" name="title" required>
