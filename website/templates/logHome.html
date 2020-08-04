@@ -244,7 +244,7 @@
     <ul class="specific">
     {% for jobs in req_job_list%}
     <hr>
-    <li>Job Title: {{jobs[0]}} <br> Employer: {{jobs[1]}} <br> Job Description: {{jobs[2]}} <br> Job Criteria: {{jobs[3]}} <br> Job Location:{{jobs[4]}}</li>
+    <li>Job Title: {{jobs[0]}} <br><br> Employer: {{jobs[1]}} <br><br> Job Description: {{jobs[2]}} <br><br> Job Criteria: {{jobs[3]}} <br><br> Job Location:{{jobs[4]}}</li>
     {% endfor %}
     </ul> 
       </div>
@@ -254,7 +254,7 @@
         <ul>
         {%for jobs in job_list%}
         <hr>
-        <li>Job Title: <b>{{jobs[0]}}</b> <br>Posted By: <b>{{ jobs[1] }}</b><br> Job Description: <b>{{ jobs[2] }}</b><br> Job Criteria: <b>{{ jobs[3]}}</b> <br>Job Location:{{jobs[4]}}</li><br>
+        <li>Job Title: <b>{{jobs[0]}}</b> <br><br>Posted By: <b>{{ jobs[1] }}</b><br><br> Job Description: <b>{{ jobs[2] }}</b><br><br>ob Criteria: <b>{{ jobs[3]}}</b> <br><br>Job Location:{{jobs[4]}}</li><br><br>
           <form action="{{ url_for('apply') }}" method="post" class="suit">
             <label for="title">Enter the job title: </label>
             <input type="text" name="title" required>
@@ -279,7 +279,7 @@
         <ul>
           <hr>
           {% for pojobs in posted_jobs %}
-          <li>Job Title: {{pojobs[0]}}<br> Job Description: {{pojobs[1]}} <br> Job Criteria: {{pojobs[2]}} <br>Job Location:{{pojobs[3]}}</li><br>
+          <li>Job Title: {{pojobs[0]}}<br><br> Job Description: {{pojobs[1]}} <br><br> Job Criteria: {{pojobs[2]}} <br><br>Job Location:{{pojobs[3]}}</li><br><br>
           <hr>
           {% endfor %}
         </ul>
@@ -289,7 +289,7 @@
       <ul>
         {% for applications in posted_applications%}
         <hr>
-        <li>Name: {{applications[0]}} <br> Email: {{applications[1]}} <br> Title: {{applications[2]}} <br></li>
+        <li>Name: {{applications[0]}} <br><br> Email: {{applications[1]}} <br><br> Title: {{applications[2]}} <br><br></li>
         <hr>
         {% endfor %}
       </ul>
@@ -300,7 +300,7 @@
     <ul>
       {% for applicants in applicant_list %}
       <hr>
-      <li>Name Of Applicant: {{applicants[0]}} <br> Email Address: {{applicants[1]}} <br> Job Description: {{applicants[2]}} <br></li>
+      <li>Name Of Applicant: {{applicants[0]}} <br><br> Email Address: {{applicants[1]}} <br><br> Job Description: {{applicants[2]}} <br><br></li>
       {% endfor %}
     </ul>
       </div>
